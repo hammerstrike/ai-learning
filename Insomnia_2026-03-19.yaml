@@ -1,0 +1,234 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: My first collection
+meta:
+  id: wrk_edbf8b3c70634fbba071c490692dba14
+  created: 1773231212756
+  modified: 1773231212756
+  description: ""
+collection:
+  - url: http://localhost:11434/api/generate
+    name: llama3 - Request
+    meta:
+      id: req_e439546472b046b3b688e6d8487fff83
+      created: 1773231212760
+      modified: 1773233332835
+      isPrivate: false
+      description: ""
+      sortKey: -1773231212760
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "model": "llama3",
+          "prompt": "Explain JWT authentication in simple words",
+          "stream": false
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.4.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/ai/explain
+    name: New Request - Simple
+    meta:
+      id: req_03b5522307bd4a8f819985ba538943fa
+      created: 1773233335819
+      modified: 1773662704602
+      isPrivate: false
+      description: ""
+      sortKey: -1773233335819
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"question": "Explain is JWT Authentication"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/ai/explain-stream
+    name: New Request - Stream
+    meta:
+      id: req_c94214bc30b4443fb2d95c4fafc98c3d
+      created: 1773662717379
+      modified: 1773662721848
+      isPrivate: false
+      description: ""
+      sortKey: -1773232274289.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"question": "Explain is JWT Authentication"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/ai/analyze-log
+    name: New Request - Structured Single
+    meta:
+      id: req_cc81dafed2344e819eb888acf4985999
+      created: 1773662736174
+      modified: 1773665139621
+      isPrivate: false
+      description: ""
+      sortKey: -1773231743524.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"log": "JWT signature verification failed"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/ai/analyze-logs
+    name: New Request - Structured Multiple Inputs
+    meta:
+      id: req_e35a2c5301a94f1bb8cecf025574f2da
+      created: 1773665150265
+      modified: 1773665172652
+      isPrivate: false
+      description: ""
+      sortKey: -1773231478142.375
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"logs": [
+        		"Auth service failed",
+        		"Database timeout occurred",
+        		"JWT signature verification failed",
+        		"Session expired"
+        	]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/ai/analyze-logs
+    name: New Request - RAG - Structured Multiple Inputs
+    meta:
+      id: req_159cedb52f5f46b59e3878ab080dffb1
+      created: 1773667483287
+      modified: 1773668980401
+      isPrivate: false
+      description: ""
+      sortKey: -1773231345451.1875
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"logs": [
+        		"Auth service failed",
+        		"JWT verification failed",
+        		"User login error"
+        	]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Approval Agent
+    meta:
+      id: fld_5e262f7036474c42af879d4944d3b9dc
+      created: 1773934770548
+      modified: 1773934770548
+      sortKey: -1773934770548
+      description: ""
+    children:
+      - url: http://localhost:3000/ai/agent
+        name: New Request
+        meta:
+          id: req_f054d172b0e84d16a96bd4b272f60cad
+          created: 1773934778978
+          modified: 1773939734332
+          isPrivate: false
+          description: ""
+          sortKey: -1773934778978
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"query": "Why quote H1 was rejected"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_242f56b46cc2ed5760967ededa0102d6603d891f
+    created: 1773231212758
+    modified: 1773231212758
+environments:
+  name: Base Environment
+  meta:
+    id: env_242f56b46cc2ed5760967ededa0102d6603d891f
+    created: 1773231212757
+    modified: 1773231212757
+    isPrivate: false
