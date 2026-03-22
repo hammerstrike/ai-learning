@@ -1,6 +1,7 @@
 const detectIntent = require("../ai/intentClassifier");
 const { getPendingQuotes, getRejectedQuotes, getQuoteById } = require("./quoteService");
 const generateRejectionExplanation = require("./explanationService");
+const predictQuoteOutcome = require("./predictionService");
 
 async function handleAgentQuery(query) {
 
@@ -12,11 +13,26 @@ async function handleAgentQuery(query) {
   console.log("Detected intent:", intent);
 
   if (intent === "GET_PENDING_QUOTES") {
-    return {
-      type: "pending_quotes",
-      quotes: getPendingQuotes()
-    };
+
+  const quotes = getPendingQuotes();
+
+  const enrichedQuotes = [];
+
+  for (const quote of quotes) {
+
+    const prediction = await predictQuoteOutcome(quote);
+
+    enrichedQuotes.push({
+      ...quote,
+      ...prediction
+    });
   }
+
+  return {
+    type: "pending_quotes",
+    quotes: enrichedQuotes
+  };
+}
 
   if (intent === "GET_REJECTED_QUOTES") {
     return {

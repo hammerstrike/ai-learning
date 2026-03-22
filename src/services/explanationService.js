@@ -1,20 +1,26 @@
 const generateLLMResponse = require("../ai/llmClient");
+const retrieveSimilarQuotes = require("../retrieval/retrieveQuotes");
 
 async function generateRejectionExplanation(quote) {
+
+  const queryText = JSON.stringify(quote);
+
+  const similarQuotes = await retrieveSimilarQuotes(queryText);
 
   const prompt = `
 You are a CPQ approval assistant.
 
-Explain why this quote was rejected in simple business language.
+Given the current quote and similar past quotes, explain why this quote was rejected.
 
-Quote:
+Current Quote:
 ${JSON.stringify(quote)}
 
-Focus on key reasons like discount, product, or pricing.
+Similar Quotes:
+${JSON.stringify(similarQuotes)}
 
-Return only explanation text.
+Explain clearly in business terms.
 `;
-
+  console.log("prompt", prompt);
   const response = await generateLLMResponse(prompt);
 
   return response;

@@ -18,9 +18,9 @@ Return ONLY JSON like:
 Query:
 ${query}
 `;
-  console.log("Prompt", prompt);
+  //console.log("Prompt", prompt);
   const response = await generateLLMResponse(prompt);
-  console.log("response", response);
+  //console.log("response", response);
   const match = response.match(/\{[\s\S]*\}/);
 
   if (match) {
